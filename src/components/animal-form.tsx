@@ -3,6 +3,7 @@ import React from 'react'
 import { z } from "zod";
 import AutoForm, { AutoFormSubmit } from '@/auto-form';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
+import { usePostAnimals } from '@/services';
 
 export default function Form() {
 
@@ -13,7 +14,9 @@ export default function Form() {
   })
 
   const saveData = (data: z.infer<typeof animalSchema>) => {
-    console.log(data);
+    usePostAnimals(data).then((response:any)=>{
+      console.log(response);
+    })
   }
 
   return (
@@ -25,7 +28,7 @@ export default function Form() {
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6">
-        <AutoForm formSchema={animalSchema}>
+        <AutoForm formSchema={animalSchema} onSubmit={saveData}>
           <AutoFormSubmit>Confirmar</AutoFormSubmit>
         </AutoForm>
       </CardContent>
