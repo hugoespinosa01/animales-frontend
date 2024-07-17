@@ -99,21 +99,15 @@ function AutoForm<SchemaType extends ZodObjectOrWrapped>({
           onSubmit={(e) => {
             form.handleSubmit(onSubmit)(e);
           }}
-          className={cn("grid gap-6", className)}
+          className={cn("space-y-5", className)}
         >
-          <div className="flex flex-row">
-            <div className="space-y-2">
-
-
-              <AutoFormObject
-                schema={objectFormSchema}
-                form={form}
-                dependencies={dependencies}
-                fieldConfig={fieldConfig}
-              />
-            </div>
-            {renderChildren}
-          </div>
+          <AutoFormObject
+            schema={objectFormSchema}
+            form={form}
+            dependencies={dependencies}
+            fieldConfig={fieldConfig}
+          />
+          {renderChildren}
         </form>
       </Form>
     </div>

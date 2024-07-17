@@ -1,10 +1,8 @@
-'use client';
+"use client";
 import React from 'react'
 import { z } from "zod";
-import AutoForm from '@/auto-form';
-import { AutoFormSubmit } from '@/auto-form';
-import { Button } from './ui/button';
-
+import AutoForm, { AutoFormSubmit } from '@/auto-form';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card'
 
 export default function Form() {
 
@@ -19,9 +17,21 @@ export default function Form() {
   }
 
   return (
-    <AutoForm formSchema={animalSchema} onSubmit={saveData}
-    >
-      <AutoFormSubmit />
-    </AutoForm>
+
+    <Card className="rounded-lg border-none mt-6">
+      <CardHeader className='gap-y-2 lg:flex-row lg:items-center lg:justify-between'>
+        <CardTitle className='text-xl line-clamp-1'>
+          Formulario de animales
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="p-6">
+        <AutoForm formSchema={animalSchema}>
+          <AutoFormSubmit>Confirmar</AutoFormSubmit>
+        </AutoForm>
+      </CardContent>
+    </Card>
+
+
+
   )
 }
